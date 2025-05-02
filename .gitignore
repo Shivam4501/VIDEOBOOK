@@ -1,0 +1,25 @@
+# macOS system files
+.DS_*
+
+# Log files
+*.log
+logs/
+
+# Backup files
+**/*.backup.*
+**/*.back.*
+
+# Node and frontend dependencies
+node_modules/
+bower_components/
+
+# Editor-specific files
+*.sublime*
+
+# Design files
+*.psd
+*.thumb
+*.sketch
+
+# Environment files
+/backend/.env

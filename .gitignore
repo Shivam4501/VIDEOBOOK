@@ -1,9 +1,38 @@
-# macOS system files
+GitIgnore Issues & Security Analysis
+🚨 Critical Issues Found
+1. Environment Variable Exposure Risk
+Problem: Your .gitignore files are inconsistent and may not properly protect sensitive data.
+Issues:
+
+Root .gitignore uses /backend/.env and /frontend/.env (absolute paths)
+Frontend .gitignore uses .env.* patterns
+Missing some common environment file patterns
+
+2. Inconsistent Patterns
+Root .gitignore issues:
+
+Uses absolute paths (/backend/.env) which might not work in all contexts
+Missing common environment patterns like .env.production, .env.staging
+
+Frontend .gitignore issues:
+
+Missing specific backend environment patterns
+Uses broad .env.* which is good, but inconsistent with root
+
+🔧 Corrected .gitignore Files
+Root .gitignore (Recommended)
+gitignore# macOS system files
 .DS_*
+**/.DS_Store
 
 # Log files
 *.log
 logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Backup files
 **/*.backup.*
@@ -12,15 +41,78 @@ logs/
 # Node and frontend dependencies
 node_modules/
 bower_components/
+*/node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+*/dist/
+*/build/
+frontend/dist/
 
 # Editor-specific files
 *.sublime*
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Design files
 *.psd
 *.thumb
 *.sketch
 
-# Environment files
-/backend/.env
-/frontend/.env
+# Environment files (CRITICAL)
+.env
+.env.*
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+.env.staging.local
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+*/.env
+*/.env.*
+
+# Runtime files
+*.local
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Temporary folders
+tmp/
+temp/
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test

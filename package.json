@@ -1,0 +1,13 @@
+{
+  "name": "videobook",
+  "version": "1.0.0",
+  "description": "A video chat website where people can connect with each other and become friends by sending friend requests and this web also provides video call option.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
